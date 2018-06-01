@@ -4,7 +4,6 @@ const webpack      = require('webpack'),
       common       = require('./webpack.common.js');
 
 module.exports = merge(common, {
-    devtool: 'cheap-module-source-map',
     plugins: [
         new MinifyPlugin(),
         new webpack.DefinePlugin({
