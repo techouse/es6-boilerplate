@@ -20,7 +20,7 @@ module.exports = merge(common, {
                 test:   /\.js$/,
                 loader: 'babel-loader',
                 query:  {
-                    presets: ['es2016']
+                    presets: ['env']
                 }
             }
         ]

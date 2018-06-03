@@ -1,8 +1,12 @@
 {
   "name": "es6-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/techouse/es6-boilerplate.git"
+  },
   "scripts": {
     "start": "lite-server",
     "dev": "webpack --config webpack.dev.js",
@@ -19,8 +23,7 @@
     "babel-plugin-transform-decorators": "^6.24.1",
     "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-plugin-transform-regenerator": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.16",
     "eslint": "^4.6.0",
     "lite-server": "^2.3.0",

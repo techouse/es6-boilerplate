@@ -26,7 +26,7 @@ module.exports = merge(common, {
                 test:   /\.js$/,
                 loader: 'babel-loader',
                 query:  {
-                    presets: ['es2015'],
+                    presets: ['env'],
                     plugins: ['transform-es2015-arrow-functions',
                               'transform-regenerator',
                               'transform-decorators',
