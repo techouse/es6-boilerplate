@@ -1,3 +1,7 @@
+<div align="center">
+    <img width="200" height="200" src="logo.svg">
+</div>
+
 # es6-boilerplate
 
 A small and lean skeleton to get you started building ES6 apps in no time.
