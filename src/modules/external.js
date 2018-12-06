@@ -1,1 +1,1 @@
-export let myKey = 1000;
+export let myKey = 1000

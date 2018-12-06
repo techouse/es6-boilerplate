@@ -1,2 +1,4 @@
 /webpack.*.js
+/postcss.config.js
+/.babelrc
 /build/*.js
