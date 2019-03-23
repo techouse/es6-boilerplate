@@ -49,10 +49,10 @@ const config = {
             {
                 test: /\.(scss|sass|css)$/i,
                 use:  [
-                    production ? {
+                    {
                         loader:  MiniCssExtractPlugin.loader,
                         options: {sourceMap}
-                    } : 'style-loader',
+                    },
                     {loader: 'css-loader', options: {sourceMap}},
                     {loader: 'postcss-loader', options: {sourceMap}},
                     'resolve-url-loader',
