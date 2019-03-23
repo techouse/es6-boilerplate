@@ -1,13 +1,13 @@
 const path                    = require('path'),
       CleanWebpackPlugin      = require('clean-webpack-plugin'),
       MiniCssExtractPlugin    = require('mini-css-extract-plugin'),
-      nodeSassMagicImporter   = require('node-sass-magic-importer'),
+      Fiber                   = require('fibers'),
       {VueLoaderPlugin}       = require('vue-loader'),
       OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
       UglifyJsPlugin          = require('uglifyjs-webpack-plugin'),
       env                     = process.env.NODE_ENV,
       sourceMap               = env === 'development',
-      minify                  = env === 'production'
+      production              = env === 'production'
 
 const config = {
     mode:         env,
@@ -48,11 +48,22 @@ const config = {
             },
             {
                 test: /\.(scss|sass|css)$/i,
-                use:  [{loader: MiniCssExtractPlugin.loader, options: {sourceMap}},
-                       {loader: 'css-loader', options: {sourceMap}},
-                       {loader: 'postcss-loader', options: {sourceMap}},
-                       'resolve-url-loader',
-                       {loader: 'sass-loader', options: {sourceMap, importer: nodeSassMagicImporter()}},]
+                use:  [
+                    production ? {
+                        loader:  MiniCssExtractPlugin.loader,
+                        options: {sourceMap}
+                    } : 'style-loader',
+                    {loader: 'css-loader', options: {sourceMap}},
+                    {loader: 'postcss-loader', options: {sourceMap}},
+                    'resolve-url-loader',
+                    {
+                        loader:  'sass-loader',
+                        options: {
+                            sourceMap:      true,
+                            implementation: require("sass"),
+                            fiber:          Fiber
+                        }
+                    },]
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -61,7 +72,7 @@ const config = {
                     options: {
                         name:       '[name].[ext]',
                         outputPath: 'fonts/',
-                        publicPath: '/static/dist/fonts/',
+                        publicPath: '/build/fonts/',
                     }
                 }]
             }
@@ -75,7 +86,7 @@ const config = {
 }
 
 
-if (minify) {
+if (production) {
     config.optimization.minimizer = [
         new OptimizeCSSAssetsPlugin(),
         new UglifyJsPlugin({
