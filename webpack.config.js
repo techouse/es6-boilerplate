@@ -1,5 +1,5 @@
 const path                    = require('path'),
-      CleanWebpackPlugin      = require('clean-webpack-plugin'),
+      {CleanWebpackPlugin}    = require('clean-webpack-plugin'),
       MiniCssExtractPlugin    = require('mini-css-extract-plugin'),
       Fiber                   = require('fibers'),
       {VueLoaderPlugin}       = require('vue-loader'),
