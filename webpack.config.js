@@ -4,7 +4,7 @@ const path                    = require('path'),
       Fiber                   = require('fibers'),
       {VueLoaderPlugin}       = require('vue-loader'),
       OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-      UglifyJsPlugin          = require('uglifyjs-webpack-plugin'),
+      TerserPlugin            = require('terser-webpack-plugin'),
       env                     = process.env.NODE_ENV,
       sourceMap               = env === 'development',
       production              = env === 'production'
@@ -89,10 +89,10 @@ const config = {
 if (production) {
     config.optimization.minimizer = [
         new OptimizeCSSAssetsPlugin(),
-        new UglifyJsPlugin({
-                               cache:    true,
-                               parallel: true,
-                           }),
+        new TerserPlugin({
+                             cache:    true,
+                             parallel: true,
+                         }),
     ]
 }
 
