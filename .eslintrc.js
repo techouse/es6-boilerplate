@@ -29,6 +29,6 @@ module.exports = {
         "quotes":                      ["error", "double"],
         'semi':                        ['error', 'never'],
         'vue/html-indent':             ['error', 4],
-        'vue/max-attributes-per-line': false
+        'vue/max-attributes-per-line': 0
     }
 }
