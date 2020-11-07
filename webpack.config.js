@@ -6,8 +6,7 @@ const {VueLoaderPlugin} = require('vue-loader')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const env = process.env.NODE_ENV
-const npm_config_argv = JSON.parse(process.env.npm_config_argv)
-const isWatch = npm_config_argv.remain.some(el => el.startsWith("--watch"))
+const isWatch = process.env.npm_lifecycle_event === "watch"
 const sourceMap = env === 'development'
 const production = env === 'production'
 
@@ -51,7 +50,6 @@ const config = {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: {sourceMap}
                     },
                     {
                         loader: "css-loader",
